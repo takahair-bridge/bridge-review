@@ -1363,5 +1363,75 @@ if(vwrap&&vid){
   vid.addEventListener('ended',()=>vwrap.classList.remove('playing'));
 }
 </script>
+
+<style>
+.brh{position:fixed;top:0;left:0;right:0;z-index:9999;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,60px);background:rgba(250,248,244,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,25,22,.1);box-sizing:border-box}
+.brh-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:400;letter-spacing:.18em;color:#1a1916;text-decoration:none;transition:color .4s}
+.brh-logo:hover{color:#a8865a}
+.brh-nav{display:flex;gap:clamp(10px,2vw,24px);align-items:center;margin:0;padding:0;list-style:none}
+.brh-nav a{font-family:'Jost','Helvetica Neue',sans-serif;font-size:.58rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,25,22,.5);text-decoration:none;transition:color .3s;position:relative;padding-bottom:2px}
+.brh-nav a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:#a8865a;transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.brh-nav a:hover,.brh-nav a.on{color:#1a1916}
+.brh-nav a:hover::after,.brh-nav a.on::after{transform:scaleX(1)}
+.brhbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.brhbg span{display:block;width:22px;height:1px;background:rgba(26,25,22,.5)}
+.brmob{display:none;position:fixed;top:60px;left:0;right:0;bottom:0;background:rgba(250,248,244,.98);backdrop-filter:blur(20px);z-index:9998;flex-direction:column;align-items:center;justify-content:center;gap:36px}
+.brmob.open{display:flex}
+.brmob a{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:300;letter-spacing:.1em;color:rgba(26,25,22,.5);text-decoration:none;transition:color .3s}
+.brmob a:hover{color:#a8865a}
+.brft{padding:clamp(44px,6vw,72px) clamp(20px,5vw,60px);display:flex;flex-direction:column;align-items:center;gap:18px;background:#faf8f4;border-top:1px solid rgba(26,25,22,.1)}
+.brft-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;font-weight:300;letter-spacing:.2em;color:rgba(26,25,22,.5)}
+.brft-tag{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:.74rem;color:rgba(26,25,22,.32);letter-spacing:.1em}
+.brft-nav{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;max-width:660px;margin:0 auto;padding:0;list-style:none}
+.brft-nav a{font-family:'Jost','Helvetica Neue',sans-serif;font-size:.6rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:rgba(26,25,22,.32);text-decoration:none;transition:color .3s}
+.brft-nav a:hover{color:#a8865a}
+.brft-nav a.on{color:#1a1916}
+.brft-copy{font-size:.58rem;font-weight:300;letter-spacing:.14em;color:rgba(26,25,22,.32)}
+.brfls{position:fixed;bottom:28px;right:24px;display:flex;flex-direction:column;gap:12px;z-index:9999}
+.brfl{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 18px rgba(26,25,22,.12);transition:transform .3s,box-shadow .3s}
+.brfl:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,25,22,.18)}
+.brfl-ln{background:#06C755}
+.brfl-ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.brfl svg{width:20px;height:20px}
+@media(max-width:720px){.brh-nav{display:none}.brhbg{display:flex}}
+</style>
+<script>
+(function(){
+var LN='<svg viewBox="0 0 24 24" fill="#fff"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>';
+var IG='<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>';
+window._br=function(nav,ft){
+  var hd=document.createElement('header');hd.className='brh';
+  hd.innerHTML='<a href="https://hub.personalhairstylist.info" class="brh-logo">bridge</a>'+
+    '<nav><ul class="brh-nav">'+nav.map(function(p){return'<li><a href="'+p[0]+'"'+(p[2]?' class="on"':'')+'>'+p[1]+'</a></li>';}).join('')+'</ul></nav>'+
+    '<button class="brhbg" id="brhbg"><span></span><span></span><span></span></button>';
+  var mb=document.createElement('div');mb.className='brmob';mb.id='brmob';
+  mb.innerHTML=nav.map(function(p){return'<a href="'+p[0]+'">'+p[1]+'</a>';}).join('');
+  var eh=document.querySelector('header');
+  if(eh){eh.style.cssText='display:none!important';eh.parentNode.insertBefore(hd,eh);hd.parentNode.insertBefore(mb,hd.nextSibling);}
+  else{document.body.insertBefore(mb,document.body.firstChild);document.body.insertBefore(hd,document.body.firstChild);}
+  var nf=document.createElement('footer');nf.className='brft';
+  nf.innerHTML='<div class="brft-logo">bridge</div><div class="brft-tag">Your hair. Your story. Your bridge.</div>'+
+    '<ul class="brft-nav">'+ft.map(function(p){return'<li><a href="'+p[0]+'"'+(p[2]?' class="on"':'')+'>'+p[1]+'</a></li>';}).join('')+'</ul>'+
+    '<div class="brft-copy">© bridge personal hair salon — Osaka · Kitahama</div>';
+  var ef=document.querySelector('footer');
+  if(ef){ef.parentNode.replaceChild(nf,ef);}else{document.body.appendChild(nf);}
+  document.querySelectorAll('#fabs,[class*="float-btn"],[class*="sticky-btn"]').forEach(function(el){el.style.display='none';});
+  var fl=document.createElement('div');fl.className='brfls';
+  fl.innerHTML='<a href="https://lin.ee/KR1qGTc" class="brfl brfl-ln" target="_blank" rel="noopener" aria-label="LINE">'+LN+'</a>'+
+    '<a href="https://www.instagram.com/takahair_bridge/" class="brfl brfl-ig" target="_blank" rel="noopener" aria-label="Instagram">'+IG+'</a>';
+  document.body.appendChild(fl);
+  var hbg=document.getElementById('brhbg'),mob=document.getElementById('brmob');
+  if(hbg&&mob){
+    hbg.addEventListener('click',function(){mob.classList.toggle('open');});
+    mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');});});
+  }
+};
+})();
+</script>
+<script>window._br(
+  [['https://hub.personalhairstylist.info','Information',false],['https://takahair-bridge.github.io/bridge-menu/','Menu',false],['https://takahair-bridge.github.io/bridge-profile/','Profile',false],['https://takahair-bridge.github.io/bridge-review/','Review',true],['https://takahair-bridge.github.io/bridge-place/','Place',false],['https://takahair-bridge.github.io/bridge-FAQ/','FAQ',false],['https://takahair-bridge.github.io/bridge-diagnosis/index.html','Diagnosis',false]],
+  [['https://hub.personalhairstylist.info','Information',false],['https://takahair-bridge.github.io/bridge-lp/','LP',false],['https://takahair-bridge.github.io/bridge-menu/','Menu',false],['https://takahair-bridge.github.io/bridge-names/','Menu Names',false],['https://takahair-bridge.github.io/bridge-profile/','Profile',false],['https://takahair-bridge.github.io/bridge-review/','Review',true],['https://takahair-bridge.github.io/bridge-place/','Place',false],['https://takahair-bridge.github.io/bridge-FAQ/','FAQ',false],['https://takahair-bridge.github.io/bridge-diagnosis/index.html','Diagnosis',false]]
+);</script>
+
 </body>
 </html>
