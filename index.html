@@ -1285,7 +1285,7 @@ footer span{
     <a href="https://takahair-bridge.github.io/bridge-diagnosis/index.html">Diagnosis</a>
     <a href="https://takahair-bridge.github.io/bridge-Products/">Products</a>
   </nav>
-  <span class="f-copy">© bridge personal hair salon — Discover Your Sanctuary</span>
+  <span class="f-copy">© bridge hair salon — Discover Your Sanctuary</span>
 </footer>
 
 <!-- FLOATING BUTTONS -->
@@ -1434,7 +1434,7 @@ window._br=function(nav,ft){
   var nf=document.createElement('footer');nf.className='brft';
   nf.innerHTML='<div class="brft-logo">bridge</div><div class="brft-tag">Your hair. Your story. Your bridge.</div>'+
     '<ul class="brft-nav">'+ft.map(function(p){return'<li><a href="'+p[0]+'"'+(p[2]?' class="on"':'')+'>'+p[1]+'</a></li>';}).join('')+'</ul>'+
-    '<div class="brft-copy">© bridge personal hair salon — Osaka · Kitahama</div>';
+    '<div class="brft-copy">© bridge hair salon — Osaka · Kitahama</div>';
   var ef=document.querySelector('footer');
   if(ef){ef.parentNode.replaceChild(nf,ef);}else{document.body.appendChild(nf);}
   document.querySelectorAll('#fabs,[class*="float-btn"],[class*="sticky-btn"]').forEach(function(el){el.style.display='none';});
