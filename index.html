@@ -834,6 +834,13 @@ footer span{
 @media(max-width:720px){
   .vcompact{grid-template-columns:1fr 1fr;gap:.6rem;padding:2.5rem 4vw;}
 }
+
+/* ★2026-08-13 追加：英語圏の窓口はInstagram（LINEが使えないため）。
+   日本語表示は一切変えず、英語表示のときだけInstagramへ向ける。 */
+.bg-ig{ background:linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF) !important;
+        border-color:transparent !important; }
+.btn-line-ig{ background:linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF) !important;
+  border-color:transparent !important; margin-top:.9rem; }
 </style>
 </head>
 <body>
@@ -1267,7 +1274,8 @@ footer span{
       No obligation, no pressure —<br>
       just a conversation.
     </p>
-    <a href="https://lin.ee/KR1qGTc" class="btn-line">LINE で相談する</a>
+    <a href="https://lin.ee/KR1qGTc" class="btn-line" target="_blank" rel="noopener">LINE で相談する</a>
+      <a href="https://www.instagram.com/takahair_bridge/" class="btn-line btn-line-ig" target="_blank" rel="noopener">Message on Instagram</a>
     <span class="cta-note">はじめての方も、お気軽にどうぞ。</span>
   </div>
 </section>
